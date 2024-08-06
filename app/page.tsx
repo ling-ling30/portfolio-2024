@@ -3,35 +3,41 @@ import GradualSpacing from "@/components/magicui/gradual-spacing";
 import { Separator } from "@/components/ui/separator";
 import ThemeToggler from "@/components/ui/theme-toggler";
 import Spline from "@splinetool/react-spline/next";
-import { DockDemo } from "./_components/Dock";
+import { NavigatioDock } from "./_components/NavigatioDock";
+import { anton, spaceMono } from "@/components/font";
+import { cn } from "@/lib/utils";
+import WordPullUp from "@/components/magicui/word-pull-up";
+import Welcome from "./_components/Welcome";
+import Experience from "./_components/Experience";
 
 export default function Home() {
   return (
-    <main>
-      <div className="fixed">
-        <DockDemo />
-      </div>
-      {/* Welcoming Viewer */}
-      <div className="w-screen flex justify-center items-center min-h-screen">
-        <div className="">
-          <GradualSpacing
-            className="align-middle text-center text-2xl sm:text-4xl font-bold tracking-[0.0em] sm:tracking-[1.1em] flex items-center text-black dark:text-white md:text-7xl md:leading-[5rem]"
-            text="WELCOME"
-            duration={1}
-            delayMultiple={0.3}
-          />
-        </div>
+    <main className="transition-colors duration-500 snap-y snap-mandatory h-screen overflow-y-auto no-scrollbar ">
+      {/* theme toggler */}
+      <div className="absolute right-0 bg-transparent z-10">
+        <ThemeToggler />
       </div>
 
+      {/* navigation */}
+      <div className="fixed z-10">
+        <NavigatioDock />
+      </div>
+
+      {/* Welcome Section */}
+      <section className="snap-start">
+        <Welcome />
+      </section>
+
+      {/* Introduction & experience */}
+
+      <Experience />
+      <div className="snap-start w-full h-screen bg-gradient-to-tr from-red-100 from-0% via-orange-100 to-yellow-100"></div>
+      <div className="snap-start w-full h-screen bg-green-500"></div>
+
       <Separator />
-      <ThemeToggler />
       <div className="relative h-[200px] w-[200px] rounded-xl">
         <BorderBeam />
       </div>
-
-      <figure className="size-96 border-1 border bg-red-50">
-        <Spline scene="https://prod.spline.design/GO4KM5tjWj6Zi7gX/scene.splinecode" />
-      </figure>
     </main>
   );
 }

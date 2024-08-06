@@ -3,12 +3,13 @@ import React, { useState } from "react";
 
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, HomeIcon, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
-export function DockDemo() {
+export function NavigatioDock() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <div
@@ -17,32 +18,35 @@ export function DockDemo() {
         isOpen && "translate-x-[0]"
       )}
     >
-      <Dock direction="middle">
+      <Dock
+        direction="middle"
+        distance={isOpen ? 50 : 10}
+        className="z-50 border-gray-900 dark:border-gray-200"
+      >
         <DockIcon>
-          <Icons.gitHub className="size-6  z-50" />
+          <HomeIcon className="size-6" />
         </DockIcon>
         <DockIcon>
-          <Icons.googleDrive className="size-6  z-50" />
+          <User className="size-6" />
         </DockIcon>
         <DockIcon>
-          <Icons.notion className="size-6  z-50" />
+          <EnvelopeClosedIcon className="size-6" />
         </DockIcon>
         <DockIcon>
-          <Icons.whatsapp className="size-6  z-50" />
+          <Icons.gitHub className="size-6" />
         </DockIcon>
-        {isOpen ? (
-          <DockIcon>
-            <div onClick={() => setIsOpen(false)}>
-              <ChevronLeft />
-            </div>
-          </DockIcon>
-        ) : (
-          <DockIcon>
-            <div onClick={() => setIsOpen(true)} className="right-10">
-              <ChevronRight />
-            </div>
-          </DockIcon>
-        )}
+
+        <DockIcon>
+          <div
+            className={cn(
+              "transition-transform ease-in-out duration-200",
+              isOpen && "rotate-180 transition-all ease-in-out duration-200"
+            )}
+            onClick={() => setIsOpen((prev) => !prev)}
+          >
+            <ChevronRight />
+          </div>
+        </DockIcon>
       </Dock>
     </div>
   );
