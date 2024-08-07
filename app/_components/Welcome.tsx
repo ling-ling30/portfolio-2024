@@ -1,5 +1,6 @@
 import { anton, spaceMono } from "@/components/font";
 import GradualSpacing from "@/components/magicui/gradual-spacing";
+import LetterPullup from "@/components/magicui/letter-pullup";
 import WordPullUp from "@/components/magicui/word-pull-up";
 import { cn } from "@/lib/utils";
 import Spline from "@splinetool/react-spline";
@@ -10,10 +11,9 @@ type Props = {};
 export default function Welcome({}: Props) {
   return (
     <div>
-      {" "}
       <div className="relative flex justify-center items-center min-h-screen bg-gradient-to-b from-slate-100 from-0% via-gray-100 to-stone-100 dark:bg-gradient-to-t dark:from-stone-900 dark:to-gray-900 ">
-        <div className="absolute w-full h-full z-100">
-          <Spline scene="https://prod.spline.design/mK710yW2tVvESkow/scene.splinecode" />
+        <div className="absolute w-full h-full z-100 ">
+          <Spline scene="https://draft.spline.design/ReOTt7rvc2y-GBZF/scene.splinecode" />
         </div>
         <div className="">
           <GradualSpacing
@@ -25,7 +25,8 @@ export default function Welcome({}: Props) {
             duration={0.5}
             delayMultiple={0.1}
           />
-          <WordPullUp
+          <LetterPullup
+            delay={0.2}
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl bg-gradient-to-t from-blue-900 to bg-red-900 bg-clip-text text-transparent dark:bg-gradient-to-t dark:from-blue-200 dark:to-red-200 dark:bg-clip-text dark:text-transparent pt-10"
             words="Full Stack Developer"
           />
