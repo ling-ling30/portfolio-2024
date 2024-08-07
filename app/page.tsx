@@ -8,7 +8,9 @@ import { anton, spaceMono } from "@/components/font";
 import { cn } from "@/lib/utils";
 import WordPullUp from "@/components/magicui/word-pull-up";
 import Welcome from "./_components/Welcome";
-import Experience from "./_components/Experience";
+import Experience from "./_components/experience/Experience";
+import SkillStack from "./_components/skills/SkillStack";
+import Game from "./_components/Game/Game";
 
 export default function Home() {
   return (
@@ -19,7 +21,7 @@ export default function Home() {
       </div>
 
       {/* navigation */}
-      <div className="fixed z-10">
+      <div className="fixed ">
         <NavigatioDock />
       </div>
 
@@ -29,9 +31,10 @@ export default function Home() {
       </section>
 
       {/* Introduction & experience */}
-
       <Experience />
-      <div className="snap-start w-full h-screen bg-gradient-to-tr from-red-100 from-0% via-orange-100 to-yellow-100"></div>
+
+      {/* <Game /> */}
+      <SkillStack />
       <div className="snap-start w-full h-screen bg-green-500"></div>
 
       <Separator />
