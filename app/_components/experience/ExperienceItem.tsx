@@ -13,12 +13,12 @@ export const ExperienceItem = ({ company, date, children, role }: Props) => {
   return (
     <section className="space-y-2">
       <div>
-        <h1 className="text-xl font-bold">{company}</h1>
-        <h3 className="text-sm">{role}</h3>
-        <h3 className="text-sm">{date}</h3>
+        <h1 className="text-2xl font-bold ">{company}</h1>
+        <h3 className="text-xs sm:text-sm  md:text-md">{role}</h3>
+        <h3 className="text-xs sm:text-sm  md:text-md">{date}</h3>
       </div>
 
-      <div className="text-sm">{children}</div>
+      <div className="text-xs sm:text-sm md:text-md">{children}</div>
     </section>
   );
 };

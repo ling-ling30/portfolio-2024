@@ -2,12 +2,13 @@ import { anton, spaceMono } from "@/components/font";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { ExperienceItem } from "./ExperienceItem";
+import Spline from "@splinetool/react-spline";
 
 type Props = {};
 
 function Experience({}: Props) {
   return (
-    <div className="snap-start w-full h-screen bg-gradient-to-bl from-cyan-100 from-0% via-sky-200 to-sky-300 dark:bg-gradient-to-b dark:from-cyan-900 dark:from-0% dark:via-sky-800 dark:to-sky-900">
+    <div className="relative snap-start w-full h-screen bg-gradient-to-bl from-cyan-100 from-0% via-sky-200 to-sky-300 dark:bg-gradient-to-b dark:from-cyan-900 dark:from-0% dark:via-sky-800 dark:to-sky-900">
       <div
         className={cn(
           "w-full h-full flex flex-col items-center space-y-5",
@@ -19,7 +20,7 @@ function Experience({}: Props) {
         <section
           className={cn(
             `${spaceMono.className}`,
-            "text-sm sm:text-md lg:text-lg p-4 max-w-[400px] sm:max-w-[600px] md:max-w-[800px] border border-white"
+            "mx-2 text-xs sm:text-md lg:text-lg p-4 max-w-[400px] sm:max-w-[600px] md:max-w-[800px] border border-white"
           )}
         >
           <p>
@@ -36,7 +37,7 @@ function Experience({}: Props) {
           <section
             className={cn(
               `${spaceMono.className}`,
-              "text-sm sm:text-md lg:text-lg p-4 min-w-[300px] sm:min-w-[500px] md:min-w-[600px] max-w-[400px] sm:max-w-[600px] md:max-w-[800px] border border-white"
+              "mx-2 text-sm sm:text-md lg:text-lg p-4 min-w-[300px] sm:min-w-[500px] md:min-w-[600px] max-w-[400px] sm:max-w-[600px] md:max-w-[800px] border border-white"
             )}
           >
             <ExperienceItem
@@ -44,7 +45,12 @@ function Experience({}: Props) {
               date="November 2023 - now"
               role="Full Stack Developer"
             >
-              i am working to make ERP for textile
+              I worked in a team of two on building an ERP application that
+              covers inventory management, production, product management,
+              orders, purchasing, and accounting . The application utilizes a
+              microservice architecture. We used PostgreSQL as the database,
+              NEXT.js for the frontend, and Express.js for the backend. It is
+              deployed on AWS EC2 wrapped in Docker with S3 for file storage.
             </ExperienceItem>
           </section>
         </section>
