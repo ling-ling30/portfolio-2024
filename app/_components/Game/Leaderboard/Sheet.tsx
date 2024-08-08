@@ -27,7 +27,11 @@ export function LeaderboardSheet({ data }: Props) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="h-6 sm:h-8 md:h-10" size={"sm"} variant="outline">
+        <Button
+          className="h-6 sm:h-8 md:h-10 dark:text-white"
+          size={"sm"}
+          variant="outline"
+        >
           Leaderboard
         </Button>
       </SheetTrigger>

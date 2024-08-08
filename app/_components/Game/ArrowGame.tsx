@@ -143,7 +143,7 @@ export default function ArrowGame({}: Props) {
   };
 
   return (
-    <section className="relative w-[300px] sm:w-[500px] md:w-[600px] lg:w-[800px] xl:w-[1000px] ">
+    <section className="relative w-[300px] sm:w-[500px] md:w-[600px] lg:w-[800px] xl:w-[1000px] dark:text-white">
       <Input
         placeholder="Enter your name"
         value={name}
