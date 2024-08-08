@@ -14,7 +14,7 @@ export function NavigatioDock() {
   return (
     <div
       className={cn(
-        "relative transition-all translate-x-[-210px]",
+        "relative transition-all translate-x-[-210px] ",
         isOpen && "translate-x-[0]"
       )}
     >

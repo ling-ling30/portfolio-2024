@@ -14,14 +14,14 @@ import Game from "./_components/Game/Game";
 
 export default function Home() {
   return (
-    <main className="transition-colors duration-500 snap-y snap-mandatory h-screen overflow-y-auto no-scrollbar ">
+    <main className="transition-colors duration-500 snap-y snap-mandatory h-screen overflow-hidden overflow-y-auto no-scrollbar ">
       {/* theme toggler */}
       <div className="absolute right-0 bg-transparent z-10">
         <ThemeToggler />
       </div>
 
       {/* navigation */}
-      <div className="fixed ">
+      <div className="fixed z-10">
         <NavigatioDock />
       </div>
 

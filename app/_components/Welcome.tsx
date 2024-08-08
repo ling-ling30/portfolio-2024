@@ -12,7 +12,7 @@ export default function Welcome({}: Props) {
   return (
     <div>
       <div className="relative flex justify-center items-center min-h-screen bg-gradient-to-b from-slate-100 from-0% via-gray-100 to-stone-100 dark:bg-gradient-to-t dark:from-stone-900 dark:to-gray-900 ">
-        <div className="absolute w-full h-full z-100 ">
+        <div className="absolute w-full h-full  ">
           <Spline scene="https://draft.spline.design/ReOTt7rvc2y-GBZF/scene.splinecode" />
         </div>
         <div className="">
