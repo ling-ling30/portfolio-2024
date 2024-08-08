@@ -6,7 +6,12 @@ import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "lucide-react";
 import React, { useEffect, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Gamepad } from "./gamepad";
-
+import { ResetIcon } from "@radix-ui/react-icons";
+import { LeaderboardSheet } from "./Leaderboard/Sheet";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
 type Props = {};
 
 type Sequence = ("ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight")[];
@@ -20,6 +25,7 @@ const difficulties = {
 };
 
 export default function ArrowGame({}: Props) {
+  const [name, setName] = useState<string | undefined>(undefined);
   const [sequence, setSequence] = useState<Sequence>([]);
   const [isDone, setIsDone] = useState(false);
   const [needGamepad, setNeedGamepad] = useState(false);
@@ -27,6 +33,10 @@ export default function ArrowGame({}: Props) {
   const [startTime, setStartTime] = useState<number | null>(null);
   const [endTime, setEndTime] = useState<number | null>(null);
   const [difficulty, setDifficulty] = useState<Difficulty>("medium");
+  const [openLeaderboard, setOpenLeaderboard] = useState<boolean>(false);
+
+  const leaderboard = useQuery(api.leaderboard.getLeaderboard);
+  const createLeaderboardEntry = useMutation(api.leaderboard.create);
 
   const generateSequence = (difficulty: Difficulty) => {
     const { characters } = difficulties[difficulty];
@@ -43,6 +53,23 @@ export default function ArrowGame({}: Props) {
     );
   };
 
+  const submitScore = useCallback(() => {
+    if (!name) {
+      toast.error("Please enter your name before submitting your score!");
+      return;
+    }
+    if (startTime && endTime) {
+      const time = formatTime(endTime - startTime);
+      createLeaderboardEntry({
+        name: name,
+        time: time,
+        difficulty: difficulty,
+      });
+      toast.success("Score submitted successfully!");
+    } else {
+      toast.error("Unable to submit score. Please try again.");
+    }
+  }, [startTime, endTime, difficulty, createLeaderboardEntry, name]);
   useEffect(() => {
     setSequence(generateSequence(difficulty));
     setIsDone(false);
@@ -54,10 +81,15 @@ export default function ArrowGame({}: Props) {
   const handleInput = useCallback(
     (input: string) => {
       if (
-        ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "].includes(input)
+        ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Delete"].includes(
+          input
+        )
       ) {
+        if (!isDone && input === "Delete") {
+          return;
+        }
         if (isDone) {
-          if (input === " ") {
+          if (input === "Delete") {
             setIsDone(false);
             setCorrectInput(0);
             setStartTime(null);
@@ -82,7 +114,6 @@ export default function ArrowGame({}: Props) {
           }
         } else {
           setCorrectInput(0);
-          setStartTime(null);
         }
       }
     },
@@ -91,8 +122,14 @@ export default function ArrowGame({}: Props) {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      event.preventDefault();
-      handleInput(event.key);
+      if (
+        ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Delete"].includes(
+          event.key
+        )
+      ) {
+        event.preventDefault();
+        handleInput(event.key);
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -106,18 +143,26 @@ export default function ArrowGame({}: Props) {
   };
 
   return (
-    <section className="relative w-[300px] sm:w-[400px] md:w-[500px] lg:w-[800px] xl:w-[1000px] h-full">
+    <section className="relative w-[300px] sm:w-[500px] md:w-[600px] lg:w-[800px] xl:w-[1000px] ">
+      <Input
+        placeholder="Enter your name"
+        value={name}
+        maxLength={10}
+        onChange={(e) => setName(e.target.value)}
+        onKeyDown={(e) => e.stopPropagation()}
+      />
       {needGamepad && <Gamepad onButtonPress={handleInput} />}
-      <div>
+      <div className="flex gap-2 py-2">
         <Button size={"sm"} onClick={() => setNeedGamepad((prev) => !prev)}>
           Gamepad
         </Button>
-        <p className="font-sans text-xs">Gamepad just work on touchscreen.</p>
+        <LeaderboardSheet data={leaderboard} />
       </div>
       <ShineBorder
-        className="relative flex h-[400px] w-full flex-col items-center space-y-4 overflow-hidden rounded-lg border bg-background md:shadow-xl z-0"
+        className="relative flex h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] w-full flex-col items-center space-y-4 overflow-hidden rounded-lg border bg-background md:shadow-xl z-0"
         color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
       >
+        {/* Instruction */}
         <section className="tracking-wide text-center z-50">
           <h1 className="text-xs sm:text-lg md:text-xl lg:text-3xl ">
             Press down the keys as fast as you can!
@@ -130,29 +175,31 @@ export default function ArrowGame({}: Props) {
               size={"sm"}
               onClick={() => setDifficulty("easy")}
               variant={difficulty === "easy" ? "default" : "outline"}
-              className="mr-2 text-xs"
+              className="mr-2 "
             >
-              Easy
+              <p className="text-[10px] sm:text-sm md:text-md">Easy</p>
             </Button>
             <Button
               size={"sm"}
               onClick={() => setDifficulty("medium")}
               variant={difficulty === "medium" ? "default" : "outline"}
-              className="mr-2 text-xs"
+              className="mr-2"
             >
-              Medium
+              <p className="text-[10px] sm:text-sm">Medium</p>
             </Button>
             <Button
+              asChild
               size={"sm"}
               onClick={() => setDifficulty("hard")}
               variant={difficulty === "hard" ? "default" : "outline"}
-              className="text-xs"
+              className=""
             >
-              Hard
+              <p className="text-[10px] sm:text-sm md:text-md">Hard</p>
             </Button>
           </div>
         </section>
-        <section className="flex flex-wrap justify-center items-center w-full h-[60%] px-4">
+        {/* Arrow */}
+        <section className="flex flex-wrap justify-center items-center w-full h-[50%] px-4 z-10">
           <div className="flex px-2">
             {sequence.map((key, index) => {
               return (
@@ -202,21 +249,38 @@ export default function ArrowGame({}: Props) {
             })}
           </div>
         </section>
-
+        {/* END */}
         {isDone && (
-          <>
-            <p>
-              Your time:{" "}
-              {startTime && endTime && formatTime(endTime - startTime)}
+          <section className="tracking-wide text-center z-50">
+            <p className="text-md">
+              Your time:
+              <span className="mx-2">
+                {startTime && endTime && formatTime(endTime - startTime)}
+              </span>
             </p>
-            <p>
-              Press
-              <kbd className="text-xs font-mono font-medium text-muted-foreground opacity-100 mx-1">
-                SPACE
-              </kbd>
-              to reset
-            </p>
-          </>
+            <div className="flex flex-col justify-center items-center gap-2">
+              <Button onClick={submitScore} variant="default" size="sm">
+                Add to leaderboard
+              </Button>
+              <div className="flex items-center">
+                <Button
+                  onClick={() => handleInput("Delete")}
+                  variant="outline"
+                  size="sm"
+                  className="px-2 py-1 mr-2"
+                >
+                  <ResetIcon />
+                </Button>
+                <p className="text-xs">
+                  Press{" "}
+                  <kbd className="px-1 py-0.5 text-xs font-mono font-medium text-muted-foreground bg-muted rounded">
+                    Delete
+                  </kbd>{" "}
+                  to reset
+                </p>
+              </div>
+            </div>
+          </section>
         )}
       </ShineBorder>
     </section>

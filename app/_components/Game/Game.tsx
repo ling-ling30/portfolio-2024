@@ -25,6 +25,7 @@ export default function Game({}: Props) {
           onClick={() => {
             setIsPlaying(false);
           }}
+          className="px-3 py-0"
         >
           Done
         </Button>
