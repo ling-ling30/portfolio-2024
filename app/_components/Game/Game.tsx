@@ -16,7 +16,7 @@ export default function Game({}: Props) {
           setIsPlaying(true);
         }}
       >
-        <ShinyButton text="Play a game ?" className=" cursor-pointer" />
+        <ShinyButton text="Play a game ?" className="cursor-pointer" />
       </div>
       {isPlaying && <ArrowGame />}
       {isPlaying && (

@@ -11,7 +11,7 @@ type Props = {};
 
 export default function SkillStack({}: Props) {
   return (
-    <div className="snap-start w-full h-screen bg-gradient-to-tr from-red-100 from-0% via-orange-100 to-yellow-100 dark:from-[#FD6F3B] dark:from-0% dark:via-[#b44e29] dark:to-yellow-800">
+    <div className="snap-start w-full h-screen bg-gradient-to-tr from-red-100 from-0% via-orange-100 to-yellow-100 dark:from-yellow-900 dark:from-0% dark:to-yellow-800">
       <div
         className={cn(
           "w-full h-full flex flex-col items-center space-y-5",

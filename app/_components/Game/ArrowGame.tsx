@@ -163,7 +163,7 @@ export default function ArrowGame({}: Props) {
         <LeaderboardSheet data={leaderboard} />
       </div>
       <ShineBorder
-        className="relative flex h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] w-full flex-col items-center space-y-4 overflow-hidden rounded-lg border bg-background md:shadow-xl z-0"
+        className="relative flex h-[250px] sm:h-[300px] md:h-[450px] lg:h-[400px] w-full flex-col items-center space-y-4 overflow-hidden rounded-lg border bg-background md:shadow-xl z-0"
         color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
       >
         {/* Instruction */}
