@@ -153,7 +153,11 @@ export default function ArrowGame({}: Props) {
       />
       {needGamepad && <Gamepad onButtonPress={handleInput} />}
       <div className="flex gap-2 py-2">
-        <Button size={"sm"} onClick={() => setNeedGamepad((prev) => !prev)}>
+        <Button
+          className="h-6 sm:h-8 md:h-10"
+          size={"sm"}
+          onClick={() => setNeedGamepad((prev) => !prev)}
+        >
           Gamepad
         </Button>
         <LeaderboardSheet data={leaderboard} />
@@ -170,31 +174,37 @@ export default function ArrowGame({}: Props) {
           <p className="text-xs">
             Timer will start when you press the first key
           </p>
-          <div className="mt-2">
+          <div className="mt-2 tracking-wider">
             <Button
               size={"sm"}
               onClick={() => setDifficulty("easy")}
               variant={difficulty === "easy" ? "default" : "outline"}
-              className="mr-2 "
+              className="mr-2 h-6 sm:h-8 md:h-10"
             >
-              <p className="text-[10px] sm:text-sm md:text-md">Easy</p>
+              <p className="text-[10px] sm:text-sm md:text-md rounded-sm">
+                Easy
+              </p>
             </Button>
             <Button
               size={"sm"}
               onClick={() => setDifficulty("medium")}
               variant={difficulty === "medium" ? "default" : "outline"}
-              className="mr-2"
+              className="mr-2 h-6 sm:h-8 md:h-10"
             >
-              <p className="text-[10px] sm:text-sm">Medium</p>
+              <p className="text-[10px] sm:text-sm md:text-med rounded-sm">
+                Medium
+              </p>
             </Button>
             <Button
               asChild
               size={"sm"}
               onClick={() => setDifficulty("hard")}
               variant={difficulty === "hard" ? "default" : "outline"}
-              className=""
+              className="h-6 sm:h-8 md:h-10"
             >
-              <p className="text-[10px] sm:text-sm md:text-md">Hard</p>
+              <p className="text-[10px] sm:text-sm md:text-md rounded-sm">
+                Hard
+              </p>
             </Button>
           </div>
         </section>
@@ -252,14 +262,17 @@ export default function ArrowGame({}: Props) {
         {/* END */}
         {isDone && (
           <section className="tracking-wide text-center z-50">
-            <p className="text-md">
+            <p className="text-xs sm:text-md">
               Your time:
               <span className="mx-2">
                 {startTime && endTime && formatTime(endTime - startTime)}
               </span>
             </p>
             <div className="flex flex-col justify-center items-center gap-2">
-              <Button onClick={submitScore} variant="default" size="sm">
+              <Button
+                onClick={submitScore}
+                className="px-2 py-0 text-xs h-6 sm:h-8 md:h-10 rounded-sm"
+              >
                 Add to leaderboard
               </Button>
               <div className="flex items-center">
@@ -267,7 +280,7 @@ export default function ArrowGame({}: Props) {
                   onClick={() => handleInput("Delete")}
                   variant="outline"
                   size="sm"
-                  className="px-2 py-1 mr-2"
+                  className="px-2 py-1 mr-2 "
                 >
                   <ResetIcon />
                 </Button>
