@@ -81,9 +81,9 @@ const data = [
 
 const SkillCard = ({ image, label }: Props) => {
   return (
-    <Card className="w-24 lg:w-40 bg-gradient-to-r from-violet-200 to-pink-200  dark:from-violet-800 dark:to-pink-800">
+    <Card className="w-20 sm:w-24 md:w-36 lg:w-40  bg-gradient-to-r from-violet-200 to-pink-200  dark:from-violet-800 dark:to-pink-800">
       <CardHeader className="w-full flex items-center justify-center">
-        <div className="size-10 lg:size-20 flex items-center justify-center">
+        <div className="size-7 sm:size-10 md:size-14 lg:size-20 flex items-center justify-center">
           <Image className="" src={image} alt="" width={100} height={100} />
         </div>
       </CardHeader>
@@ -98,7 +98,7 @@ const SkillCard = ({ image, label }: Props) => {
 
 export default function SkillMarquee() {
   return (
-    <Marquee pauseOnHover className="[--duration:20s]">
+    <Marquee pauseOnHover className="[--duration:20s] overflow-hidden">
       {data.map((data) => {
         return (
           <SkillCard key={data.label} image={data.image} label={data.label} />
