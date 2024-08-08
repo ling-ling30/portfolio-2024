@@ -8,7 +8,10 @@ type Props = {};
 
 function Experience({}: Props) {
   return (
-    <div className="relative snap-start w-full h-screen bg-gradient-to-bl from-cyan-100 from-0% via-sky-200 to-sky-300 dark:bg-gradient-to-b dark:from-cyan-900 dark:from-0% dark:via-sky-800 dark:to-sky-900">
+    <div
+      id="about"
+      className="relative snap-start w-full h-screen bg-gradient-to-bl from-cyan-100 from-0% via-sky-200 to-sky-300 dark:bg-gradient-to-b dark:from-cyan-900 dark:from-0% dark:via-sky-800 dark:to-sky-900"
+    >
       <div
         className={cn(
           "w-full h-full flex flex-col items-center space-y-5",

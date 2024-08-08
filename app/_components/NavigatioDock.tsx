@@ -6,11 +6,18 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, HomeIcon, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
-
+const generateMailtoLink = (email: string, subject: string, body: string) => {
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+};
 export function NavigatioDock() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const email = "ricky-inbox@outlook.com";
+  const subject = "Hello There";
+  const body = "";
+
   return (
     <div
       className={cn(
@@ -24,16 +31,24 @@ export function NavigatioDock() {
         className="z-50 border-gray-900 dark:border-gray-200"
       >
         <DockIcon>
-          <HomeIcon className="size-6" />
+          <Link href={"#home"}>
+            <HomeIcon className="size-6" />
+          </Link>
         </DockIcon>
         <DockIcon>
-          <User className="size-6" />
+          <Link href={"#about"}>
+            <User className="size-6" />
+          </Link>
         </DockIcon>
         <DockIcon>
-          <EnvelopeClosedIcon className="size-6" />
+          <a href={generateMailtoLink(email, subject, body)}>
+            <EnvelopeClosedIcon className="size-6" />
+          </a>
         </DockIcon>
         <DockIcon>
-          <Icons.gitHub className="size-6" />
+          <Link href={"https://github.com/ling-ling30/"} target="_blank">
+            <Icons.gitHub className="size-6" />
+          </Link>
         </DockIcon>
 
         <DockIcon>

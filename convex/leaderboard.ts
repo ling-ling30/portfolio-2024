@@ -25,7 +25,6 @@ export const getLeaderboard = query({
       .withIndex("by_time")
       .order("desc")
       .collect();
-    console.log(leaderboard);
     return leaderboard;
   },
 });

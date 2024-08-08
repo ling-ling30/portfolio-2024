@@ -11,6 +11,7 @@ import Welcome from "./_components/Welcome";
 import Experience from "./_components/experience/Experience";
 import SkillStack from "./_components/skills/SkillStack";
 import Game from "./_components/Game/Game";
+import Projects from "./_components/projects/Projects";
 
 export default function Home() {
   return (
@@ -26,7 +27,7 @@ export default function Home() {
       </div>
 
       {/* Welcome Section */}
-      <section className="snap-start">
+      <section id="home" className="snap-start">
         <Welcome />
       </section>
 
@@ -35,12 +36,9 @@ export default function Home() {
 
       {/* <Game /> */}
       <SkillStack />
-      <div className="snap-start w-full h-screen bg-green-500"></div>
 
+      <Projects />
       <Separator />
-      <div className="relative h-[200px] w-[200px] rounded-xl">
-        <BorderBeam />
-      </div>
     </main>
   );
 }

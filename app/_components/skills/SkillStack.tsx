@@ -13,7 +13,10 @@ type Props = {};
 export default function SkillStack({}: Props) {
   return (
     <AuroraBackground>
-      <div className="snap-start w-full h-screen bg-gradient-to-tr from-red-100 from-0% via-orange-100 to-yellow-100 dark:from-yellow-900 dark:from-0% dark:to-yellow-800">
+      <div
+        id="skills"
+        className="snap-start w-full h-screen bg-gradient-to-tr from-red-100 from-0% via-orange-100 to-yellow-100 dark:from-yellow-900 dark:from-0% dark:to-yellow-800"
+      >
         <div
           className={cn(
             "w-full h-full flex flex-col items-center space-y-5",
