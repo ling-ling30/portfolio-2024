@@ -1,19 +1,11 @@
 import dynamic from "next/dynamic";
-const Experience = dynamic(
-  () => import("./_components/experience/Experience"),
-  {
-    ssr: false,
-  }
-);
-const SkillStack = dynamic(() => import("./_components/skills/SkillStack"), {
-  ssr: false,
-});
-const Projects = dynamic(() => import("./_components/projects/Projects"), {
-  ssr: false,
-});
+
 import ThemeToggler from "@/components/ui/theme-toggler";
 import { NavigatioDock } from "./_components/NavigatioDock";
 import Welcome from "./_components/Welcome";
+import Experience from "./_components/experience/Experience";
+import SkillStack from "./_components/skills/SkillStack";
+import Projects from "./_components/projects/Projects";
 
 export default function Home() {
   return (
@@ -29,9 +21,7 @@ export default function Home() {
       </div>
 
       {/* Welcome Section */}
-      <section id="home" className="snap-start">
-        <Welcome />
-      </section>
+      <Welcome />
 
       {/* Introduction & experience */}
       <Experience />
