@@ -1,4 +1,3 @@
-import NumberTicker from "@/components/magicui/number-ticker";
 import { MultiStepLoader } from "@/components/ui/multi-step-loader";
 import React from "react";
 
