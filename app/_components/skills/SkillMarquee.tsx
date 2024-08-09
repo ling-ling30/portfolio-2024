@@ -10,7 +10,7 @@ type Props = {
 
 const data = [
   {
-    image: "/authJS.png",
+    image: "/authJs.png",
     label: "AuthJS / NextAuth",
   },
   {
@@ -38,7 +38,7 @@ const data = [
     label: "MongoDB",
   },
   {
-    image: "/next.svg",
+    image: "/next-js.svg",
     label: "NextJS",
   },
   {
@@ -91,6 +91,8 @@ const SkillCard = ({ image, label }: Props) => {
             width={100}
             height={100}
             loading="lazy"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
           />
         </div>
       </CardHeader>
