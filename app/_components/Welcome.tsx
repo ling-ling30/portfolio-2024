@@ -22,11 +22,10 @@ export default function Welcome({}: Props) {
             delayMultiple={0.1}
           />
           <LetterPullup
-            delay={0.2}
+            delay={0.1}
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl bg-gradient-to-t from-blue-900 to bg-red-900 bg-clip-text text-transparent dark:bg-gradient-to-t dark:from-blue-200 dark:to-red-200 dark:bg-clip-text dark:text-transparent pt-10"
             words="Full Stack Developer"
           />
-          <p className={cn(`${anton.className} text-4xl tracking-[0.3em]`)}></p>
         </div>
         <BackgroundBeams />
       </div>

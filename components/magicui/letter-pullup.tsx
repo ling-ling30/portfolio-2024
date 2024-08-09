@@ -18,7 +18,7 @@ export default function LetterPullup({
   const letters = words.split("");
 
   const pullupVariant = {
-    initial: { y: 100, opacity: 0 },
+    initial: { y: 50, opacity: 0 },
     animate: (i: any) => ({
       y: 0,
       opacity: 1,
@@ -39,7 +39,7 @@ export default function LetterPullup({
           custom={i}
           className={cn(
             "font-display text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-4xl md:leading-[5rem]",
-            className,
+            className
           )}
         >
           {letter === " " ? <span>&nbsp;</span> : letter}
