@@ -18,7 +18,7 @@ export default function LetterPullup({
   const letters = words.split("");
 
   const pullupVariant = {
-    initial: { y: 50, opacity: 0 },
+    initial: { y: 20, opacity: 0 },
     animate: (i: any) => ({
       y: 0,
       opacity: 1,
