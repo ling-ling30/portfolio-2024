@@ -2,7 +2,6 @@ import { anton, spaceMono } from "@/components/font";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { ExperienceItem } from "./ExperienceItem";
-import Spline from "@splinetool/react-spline";
 
 type Props = {};
 

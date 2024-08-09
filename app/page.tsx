@@ -1,17 +1,19 @@
-import { BorderBeam } from "@/components/magicui/border-beam";
-import GradualSpacing from "@/components/magicui/gradual-spacing";
-import { Separator } from "@/components/ui/separator";
+import dynamic from "next/dynamic";
+const Experience = dynamic(
+  () => import("./_components/experience/Experience"),
+  {
+    ssr: false,
+  }
+);
+const SkillStack = dynamic(() => import("./_components/skills/SkillStack"), {
+  ssr: false,
+});
+const Projects = dynamic(() => import("./_components/projects/Projects"), {
+  ssr: false,
+});
 import ThemeToggler from "@/components/ui/theme-toggler";
-import Spline from "@splinetool/react-spline/next";
 import { NavigatioDock } from "./_components/NavigatioDock";
-import { anton, spaceMono } from "@/components/font";
-import { cn } from "@/lib/utils";
-import WordPullUp from "@/components/magicui/word-pull-up";
 import Welcome from "./_components/Welcome";
-import Experience from "./_components/experience/Experience";
-import SkillStack from "./_components/skills/SkillStack";
-import Game from "./_components/Game/Game";
-import Projects from "./_components/projects/Projects";
 
 export default function Home() {
   return (
@@ -34,11 +36,9 @@ export default function Home() {
       {/* Introduction & experience */}
       <Experience />
 
-      {/* <Game /> */}
       <SkillStack />
 
       <Projects />
-      <Separator />
     </main>
   );
 }

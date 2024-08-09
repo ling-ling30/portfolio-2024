@@ -5,7 +5,7 @@ import { Dock, DockIcon } from "@/components/magicui/dock";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, HomeIcon, User } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
+import { EnvelopeClosedIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
@@ -21,7 +21,7 @@ export function NavigatioDock() {
   return (
     <div
       className={cn(
-        "relative transition-all translate-x-[-210px] ",
+        "relative transition-all translate-x-[-250px] ",
         isOpen && "translate-x-[0]"
       )}
     >
@@ -44,6 +44,14 @@ export function NavigatioDock() {
           <a href={generateMailtoLink(email, subject, body)}>
             <EnvelopeClosedIcon className="size-6" />
           </a>
+        </DockIcon>
+        <DockIcon>
+          <Link
+            href={"https://www.linkedin.com/in/ricky-62464b154/"}
+            target="_blank"
+          >
+            <LinkedInLogoIcon className="size-6" />
+          </Link>
         </DockIcon>
         <DockIcon>
           <Link href={"https://github.com/ling-ling30/"} target="_blank">

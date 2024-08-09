@@ -11,25 +11,28 @@ export default function Game({}: Props) {
 
   return (
     <>
-      <div
-        onClick={() => {
-          setIsPlaying(true);
-        }}
-      >
-        <ShinyButton text="Play a game ?" className="cursor-pointer" />
-      </div>
-      {isPlaying && <ArrowGame />}
-      {isPlaying && (
-        <Button
-          size={"sm"}
+      <div className="flex gap-2">
+        <div
           onClick={() => {
-            setIsPlaying(false);
+            setIsPlaying(true);
           }}
-          className="px-3 py-0"
         >
-          Done
-        </Button>
-      )}
+          <ShinyButton text="Play a game ?" className="cursor-pointer" />
+        </div>
+        {isPlaying && (
+          <Button
+            size={"sm"}
+            onClick={() => {
+              setIsPlaying(false);
+            }}
+            className="h-9 tracking-wider"
+          >
+            Done
+          </Button>
+        )}
+      </div>
+
+      {isPlaying && <ArrowGame />}
     </>
   );
 }
