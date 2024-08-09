@@ -29,7 +29,7 @@ export default function Welcome({}: Props) {
           words="Full Stack Developer"
         />
       </div>
-      <BackgroundBeams />
+      {/* <BackgroundBeams /> */}
     </section>
   );
 }
