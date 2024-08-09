@@ -38,7 +38,7 @@ const data = [
     label: "MongoDB",
   },
   {
-    image: "/next-js.svg",
+    image: "/next.svg",
     label: "NextJS",
   },
   {
