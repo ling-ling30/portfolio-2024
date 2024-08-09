@@ -155,7 +155,7 @@ export function ProjectCard({ projects }: Props) {
           </div>
         ) : null}
       </AnimatePresence>
-      <ul className="max-w-4xl mx-auto w-full grid grid-cols-1 sm:grid-cols-2 items-start gap-4">
+      <div className="max-w-4xl mx-auto w-full grid grid-cols-1 sm:grid-cols-2 items-start gap-4">
         {projects.map((card, index) => (
           <motion.div
             layoutId={`card-${card.title}-${id}`}
@@ -202,7 +202,7 @@ export function ProjectCard({ projects }: Props) {
             </div>
           </motion.div>
         ))}
-      </ul>
+      </div>
     </>
   );
 }
