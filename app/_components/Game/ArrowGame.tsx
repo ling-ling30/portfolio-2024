@@ -23,6 +23,20 @@ const difficulties = {
   medium: { characters: 8 },
   hard: { characters: 12 },
 };
+const generateSequence = (difficulty: Difficulty) => {
+  const { characters } = difficulties[difficulty];
+  const length = characters;
+  const arrows: Sequence = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+  return Array.from(
+    { length },
+    () => arrows[Math.floor(Math.random() * arrows.length)]
+  );
+};
+const formatTime = (ms: number) => {
+  const seconds = Math.floor(ms / 1000);
+  const milliseconds = ms % 1000;
+  return `${seconds}.${milliseconds.toString().padStart(3, "0")}s`;
+};
 
 export default function ArrowGame({}: Props) {
   const [name, setName] = useState<string | undefined>(undefined);
@@ -37,21 +51,6 @@ export default function ArrowGame({}: Props) {
 
   const leaderboard = useQuery(api.leaderboard.getLeaderboard);
   const createLeaderboardEntry = useMutation(api.leaderboard.create);
-
-  const generateSequence = (difficulty: Difficulty) => {
-    const { characters } = difficulties[difficulty];
-    const length = characters;
-    const arrows: Sequence = [
-      "ArrowUp",
-      "ArrowDown",
-      "ArrowLeft",
-      "ArrowRight",
-    ];
-    return Array.from(
-      { length },
-      () => arrows[Math.floor(Math.random() * arrows.length)]
-    );
-  };
 
   const submitScore = useCallback(() => {
     if (!name) {
@@ -135,12 +134,6 @@ export default function ArrowGame({}: Props) {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleInput]);
-
-  const formatTime = (ms: number) => {
-    const seconds = Math.floor(ms / 1000);
-    const milliseconds = ms % 1000;
-    return `${seconds}.${milliseconds.toString().padStart(3, "0")}s`;
-  };
 
   return (
     <section className="relative w-[300px] sm:w-[500px] md:w-[600px] lg:w-[800px] xl:w-[1000px] dark:text-white">
