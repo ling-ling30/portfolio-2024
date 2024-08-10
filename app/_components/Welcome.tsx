@@ -1,10 +1,6 @@
-import { anton, spaceMono } from "@/components/font";
-import GradualSpacing from "@/components/magicui/gradual-spacing";
-import LetterPullup from "@/components/magicui/letter-pullup";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { GradualSpacingCSS } from "@/components/ui/GradualSpacing";
 import LetterUpCSS from "@/components/ui/LetterUpCSS";
-import { cn } from "@/lib/utils";
 import React from "react";
 
 type Props = {};
@@ -24,7 +20,7 @@ export default function Welcome({}: Props) {
           text="Full Stack Developer"
         />
       </div>
-      {/* <BackgroundBeams /> */}
+      <BackgroundBeams />
     </section>
   );
 }
