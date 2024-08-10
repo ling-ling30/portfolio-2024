@@ -17,7 +17,7 @@ export const GradualSpacingCSS = ({ text, delay = 100, className }: Props) => {
           key={index}
           className={cn(
             `${spaceMono.className}`,
-            "text-2xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl inline-block animate-move-right scroll-m-20  font-extrabold tracking-tight bg-gradient-to-t from-blue-900 to bg-red-900 bg-clip-text text-transparent dark:bg-gradient-to-t dark:from-blue-200 dark:to-red-200 dark:bg-clip-text dark:text-transparent",
+            "text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl inline-block animate-move-right scroll-m-20  font-extrabold tracking-tight bg-gradient-to-t from-blue-900 to bg-red-900 bg-clip-text text-transparent dark:bg-gradient-to-t dark:from-blue-200 dark:to-red-200 dark:bg-clip-text dark:text-transparent",
             className,
             isSpace ? "w-4 lg:w-10 xl:w-14" : "mr-1"
           )}
