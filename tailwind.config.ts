@@ -78,6 +78,7 @@ const config = {
             "offset-distance": "100%",
           },
         },
+
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(calc(-100% - var(--gap)))" },
@@ -105,8 +106,25 @@ const config = {
             backgroundPosition: "350% 50%, 350% 50%",
           },
         },
+        "move-right": {
+          from: {
+            transform: "translateX(-50px)",
+            opacity: "0.2",
+          },
+          to: {
+            transform: "translateX(0)",
+            opacity: "1",
+          },
+        },
+        "move-up": {
+          "0%": { transform: "translateY(20px)", opacity: "0" },
+          "50%": { transform: "translateY(30px)", opacity: "1" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
       },
       animation: {
+        "move-up": "move-up 0.5s ease-out forwards",
+        "move-right": "move-right 0.5s ease-out forwards",
         grid: "grid 15s linear infinite",
         aurora: "aurora 60s linear infinite",
         marquee: "marquee var(--duration) linear infinite",
