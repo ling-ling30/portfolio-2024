@@ -31,7 +31,7 @@ export default function Projects({}: Props) {
       title: "NextAuth",
       content: () => {
         return (
-          <p>
+          <div>
             In this project, I delved into the authentication system using
             NextAuth/authjs. After previous attempts to create my authentication
             system from scratch, I decided to learn NextAuth/authjs, which
@@ -39,7 +39,10 @@ export default function Projects({}: Props) {
             CodeWithAntonio for providing the materials and guidance. I
             documented my thought proccess, development and improvements made in
             this project in my GitHub repository.
-          </p>
+            <p>for testing, you can use the following credentials:</p>
+            <p> email = admin@admin.com </p>
+            <p> password = admin </p>
+          </div>
         );
       },
       photo: "/projects/NextAuth.png",
