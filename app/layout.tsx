@@ -5,6 +5,8 @@ import { ThemeProvider } from "next-themes";
 import LoadingProviders from "@/components/providers/loading-provider";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +29,8 @@ export default function RootLayout({
             <ConvexClientProvider>{children}</ConvexClientProvider>
           </LoadingProviders>
         </ThemeProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
